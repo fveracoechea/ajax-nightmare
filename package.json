@@ -1,0 +1,33 @@
+{
+  "name": "ajax-nightmare",
+  "version": "1.0.0",
+  "description": "A simple API that implements XMLHttpRequest based on promises",
+  "main": "./lib/app.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FranciscoVeracoechea/ajax-nightmare.git"
+  },
+  "keywords": [
+    "ajax",
+    "XMLHttpRequest",
+    "http",
+    "client",
+    "fetch",
+    "abort",
+    "fetch-data",
+    "onprogress"
+  ],
+  "author": "Francisco Veracoechea <veracoecheafrancisco@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/FranciscoVeracoechea/ajax-nightmare/issues"
+  },
+  "homepage": "https://github.com/FranciscoVeracoechea/ajax-nightmare#readme"
+}

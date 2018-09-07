@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>ajax nightmare</title>
+</head>
+<body>
+  <script src="../lib/app.js"></script>
+  <script>
+    // Ajax.baseUrl = 'http://www.omdbapi.com';
+    const request = new Ajax('http://www.omdbapi.com/?i=tt3896198&apikey=a95b5205');
+    request.result()
+      .then(json => console.log(json))
+      .catch(error => console.log(error));
+  </script>
+</body>
+</html>
