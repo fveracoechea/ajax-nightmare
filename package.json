@@ -1,6 +1,6 @@
 {
   "name": "ajax-nightmare",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A simple API that implements XMLHttpRequest based on promises",
   "main": "./lib/app.js",
   "directories": {

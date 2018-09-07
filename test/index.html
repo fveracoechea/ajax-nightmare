@@ -9,11 +9,12 @@
 <body>
   <script src="../lib/app.js"></script>
   <script>
-    // Ajax.baseUrl = 'http://www.omdbapi.com';
-    const request = new Ajax('http://www.omdbapi.com/?i=tt3896198&apikey=a95b5205');
+    Ajax.baseUrl = 'https://www.api.divensports.com/api';
+    const request = new Ajax('/user');
     request.result()
       .then(json => console.log(json))
       .catch(error => console.log(error));
+    console.log(request)
   </script>
 </body>
 </html>
