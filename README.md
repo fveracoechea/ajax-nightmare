@@ -36,9 +36,12 @@ request.profiles.result()
   .catch(error => console.log(error));
 ```
 ### Token - Authorization header
-In case you are using authentication you can use this configuration to set the 'Authorization' header with a certain token
+In case you are using authentication you can use this configuration to set the 'Authorization' header with a certain token.
+Finally, when instantiating each request, it must be specified in the options that the credentials will be used.
 ```js
 Ajax.token = '1s2fd8h503jfn2gn4jgj405dcnb94';
+const profileRequest = new Ajax('/profiles', { credentials: true });
+const gameRequest = new Ajax('/games', { credentials: true });
 ```
 ### Global Headers
 If your requests need to make use of a specific header you can specify it here. This will not affect the headers that you set in a specific way is a certain instance. (We'll see later) ...
@@ -62,6 +65,7 @@ const request = new Ajax('/sports', {
   },
   credentials: true, // default false, Here you specify if authentication using the token is used
   useBaseUrl: false, // default true, it is specified if the base url is used or not
+  autoSend = false, // default true 
   onUploadProgress: (event, progress) => console.log(event, progress),
   onReadyStateChange: () => console.log(request.readyState),
 });
@@ -70,8 +74,8 @@ const request = new Ajax('/sports', {
 ## Aborting a request
 it is possible to abort a request by executing the abort method of an instance
 ```js
-request.profiles = new Ajax('/profiles');
-request.profiles.result()
+const request = new Ajax('/profiles');
+request.result()
   .then(json => console.log(json))
   .catch(error => console.log(error));
 
@@ -81,8 +85,8 @@ setTimeout(() => {
 ```
 ## Error handling
 ```js
-request.profiles = new Ajax('/games');
-request.profiles.result()
+const request = new Ajax('/games');
+request.result()
   .then(json => console.log(json))
   .catch(error => console.log(error));
 // console output
@@ -106,7 +110,7 @@ request.profiles.result()
 ```js
 // success and error
 // provides the result of a request, at the beginning it is false, but when the information arrives its value is changed
-request.profiles = new Ajax('/games');
+const request = new Ajax('https://www.example.com/games);
 await request.result();
 console.log(request.success);
 console.log(request.error);
@@ -115,4 +119,18 @@ request.status
 request.statusText
 request.responseText
 request.readyState
+```
+## Using the send method
+There may be the situation in which you need to send the request in a different habit,
+or you simply prefer to set the details of the request to execute the shipment later.
+In any case, if you wish, it is possible not to send at the moment of instantiation of the object.
+```js
+const request = new Ajax('https://www.example.com/give-me-the-money', { autoSend: false });
+request.result()
+  .then(money => pay(money))
+  .catch(() => takeItAndRun());
+// doing something else...
+if (needMoney) {
+  request.send();
+}
 ```

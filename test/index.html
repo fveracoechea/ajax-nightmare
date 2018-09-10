@@ -10,11 +10,13 @@
   <script src="../lib/app.js"></script>
   <script>
     Ajax.baseUrl = 'https://www.api.divensports.com/api';
-    const request = new Ajax('/user');
+    const request = new Ajax('/user', { autoSend: false });
     request.result()
       .then(json => console.log(json))
       .catch(error => console.log(error));
-    console.log(request)
+    setTimeout(() => {
+      request.send();
+    }, 4000);
   </script>
 </body>
 </html>
